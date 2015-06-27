@@ -4,6 +4,23 @@ A faster Runtime.exec for Java
 ### How does it work?
 Native libraries of course. It simply calls `popen()` for you in a C library.
 
+### How much faster?
+A lot faster. Look at these results;
+
+- Table:
+[The table](res/table.png)
+
+- Graph of `echo hello`
+[Graph A](res/graph_a.png)
+
+- Graph of `md5sum test`
+- Note: `test` is a 20 mb file, and the same one was used across all tests
+[Graph B](res/graph_b.png)
+
+- Graph of `dd if=/dev/urandom of=test count=20 bs=1M`
+- Note: I was doing this on a slower ARM system so the results may be faster for you
+[Graph C](res/graph_c.png)
+
 ### How to use it.
 Simple. Download or compile the library under the `native/`. Then integrate the Java source with yours. On your java app startup, add the flag `-Djava.library.path="/path/to/library` so the program can find the native library.
 
